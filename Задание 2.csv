@@ -1,0 +1,71 @@
+Номер дефекта,Название (Summary):,Критичность/Серьезность (Severity):,Окружение,Описание( Description):,Шаги (Steps to reproduce):,Фактический результат (Actual result):,Ожидаемый результат (Expected result):,Ссылка на вложение (Attachments)
+1,неполная передача данных в ответе по запросу GET,Значительная (Major),Acer Extensa 15; процессор - Intel Core i3-1005G1; ОС - Windows 10 версия 1809 сборка 17763.3046; Браузер - Chrom Версия 103.0.5060.114,"В ответе на GET запрос получаем поле ""phone"" с номером. Должно быть пустым. Поле ""patronymic"" содержит знак "" . "" в поле данных",URL: http://zayavka-na-kartu-3.sdew.ru/save.php,"{
+    ""data"": {
+        ""name"": """",
+        ""surname"": """",
+        ""patronymic"": ""."",
+        ""phone"": ""8 (800) 301-39-69""
+    }
+}                                                               код ответа 200","{
+    ""data"": {
+        ""name"": """",
+        ""surname"": """",
+        ""patronymic"": """",
+        ""phone"": """",
+        ""birthday"": """",
+        ""passport"": """"
+    }                                                                                           }                                                                   Код ответа 200",https://drive.google.com/file/d/1Wbv_quEeztCFZ8DTnff0a3dKWKkeckRp/view?usp=sharing
+,,,,,HTTP метод GET,,,
+2,не корректное сохранение данных,Критическая (Critical),Acer Extensa 15; процессор - Intel Core i3-1005G1; ОС - Windows 10 версия 1809 сборка 17763.3046; Браузер - Chrom Версия 103.0.5060.114,"При отправке POST запроса происходит подмена данных в поле ""surname"" на данные из поля ""patronymic"".  Подмена данных в поле ""phone"" Так же приходит не верный код ответа.",URL: http://zayavka-na-kartu-3.sdew.ru/save.php,"{
+    ""data"": {
+        ""name"": ""антон"",
+        ""surname"": ""павлович"",
+        ""patronymic"": ""павлович."",
+        ""phone"": ""8 (800) 301-39-69"",
+        ""birthday"": ""15.06.1900"",
+        ""passport"": ""1234 № 12345678""
+    }                                                                                           }                                                                   Код ответа 200","{
+    ""data"": {                                                              
+        ""id"" : ""01""
+        ""name"": ""антон"",
+        ""surname"": ""чехов"",
+        ""patronymic"": ""павлович."",
+        ""phone"": ""+7 (1234) 123-45-67"",
+        ""birthday"": ""15.06.1900"",
+        ""passport"": ""1234 № 12345678""
+    }                                                           }                                                                 Код ответа 201",https://drive.google.com/file/d/1PHw28BUAb_m_s7sHJMeO0jtb3JgJPqsJ/view?usp=sharing
+,,,,,HTTP метод POST,,,
+,,,,,"Тело запроса:                                                                                                       {
+""name"": ""Антон"",
+""surname"": ""Чехов"",
+""patronymic"": ""Павлович"",
+""phone"": ""+7 (123)-123-45-67"",
+""birthday"": ""15.06.1900"",
+""passport"": ""1234 № 12345678""
+}",,,
+3,не корректный ответ по запросу GET при заполненном теле запроса,Значительная (Major),Acer Extensa 15; процессор - Intel Core i3-1005G1; ОС - Windows 10 версия 1809 сборка 17763.3046; Браузер - Chrom Версия 103.0.5060.114,При отправке GET запроса с заполненным телом запроса приходит ответ с заполненными полями в теле ответа,URL: http://zayavka-na-kartu-3.sdew.ru/save.php,"{
+    ""data"": {
+        ""name"": ""антон"",
+        ""surname"": ""павлович"",
+        ""patronymic"": ""павлович."",
+        ""phone"": ""8 (800) 301-39-69"",
+        ""birthday"": ""15.06.1900"",
+        ""passport"": ""1234 № 12345678""
+    }                                                                                           }                                                                   Код ответа 200","{
+    ""data"": {
+        ""name"": """",
+        ""surname"": """",
+        ""patronymic"": """",
+        ""phone"": """",
+        ""birthday"": """",
+        ""passport"": """"
+    }                                                                                           }                                                                   Код ответа 200",https://drive.google.com/file/d/1UTfpffRaJXOtC4CBkVnCg4RE9J-MGFMw/view?usp=sharing
+,,,,,HTTP метод GET,,,
+,,,,,"Тело запроса:                                                                                                       {
+""name"": ""Антон"",
+""surname"": ""Чехов"",
+""patronymic"": ""Павлович"",
+""phone"": ""+7 (123)-123-45-67"",
+""birthday"": ""15.06.1900"",
+""passport"": ""1234 № 12345678""
+}",,,
