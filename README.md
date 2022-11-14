@@ -23,4 +23,4 @@
 
 ## Результат
 
-Посмотреть можно [здесь](https://docs.google.com/spreadsheets/d/1q0e87bHle629jcMclLuGP7GlLGQMviF57Bo0imZ_j2A/edit?usp=sharing)
+[Баг-репорт](https://docs.google.com/spreadsheets/d/1q0e87bHle629jcMclLuGP7GlLGQMviF57Bo0imZ_j2A/edit?usp=sharing)
